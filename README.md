@@ -31,10 +31,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 [Mapbox](https://www.mapbox.com/)
+
 [Leaflet](https://leafletjs.com/)
 
 ## Contact
 Gustavo Ribeiro Santiago
+
 Email: gustavorsa@poli.ufrj.br
+
 GitHub: https://github.com/gustavo-ribeiro-santiago
+
 Feel free to reach out if you have any questions or feedback!
