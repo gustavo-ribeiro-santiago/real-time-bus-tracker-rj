@@ -7,7 +7,7 @@ async function createMapClustering() {
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
   const busIcon = L.icon({
-    iconUrl: 'bus.png', // Replace with the path to your custom marker image
+    iconUrl: 'bus.png', // bus marker image
     iconSize: [32, 32], // Width and height of the icon
     iconAnchor: [16, 32], // The coordinates of the "tip" of the icon (relative to its top left corner)
     popupAnchor: [0, -32], // The coordinates of the point from which popups will "open", relative to the icon anchor
@@ -19,7 +19,7 @@ async function createMapClustering() {
     const data = await getBusLocations();
     markers.clearLayers();
     const length = data.length;
-    let markedBuses = []
+    let markedBuses = [] // to avoid repetition due to data characteristics
     for (let i = 0; i < length; i++) {
       const bus = data[i];
       if (markedBuses.indexOf(bus.ordem) < 0) {
@@ -41,7 +41,7 @@ async function createMapClustering() {
   // Function to fetch bus locations
   async function getBusLocations() {
     const currentDate = new Date();
-    const minutesToSubtract = 11;
+    const minutesToSubtract = 5;
     const initialDate = new Date(currentDate.getTime() - 60000 * minutesToSubtract);
     const finalDate   = new Date(currentDate.getTime());
     const formattedInitialDate  = initialDate.getFullYear() + "-" + ("0"+(initialDate.getMonth()+1)).slice(-2) + "-" + 
