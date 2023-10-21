@@ -24,7 +24,7 @@ async function createMapClustering() {
       const bus = data[i];
       if (markedBuses.indexOf(bus.ordem) < 0) {
         markedBuses.push(bus.ordem);
-        const title = 'Bus line: ' + bus.linha + '; Vehicle ID: ' +  bus.ordem + '; Speed: ' + bus.velocidade + ' km/h; Data: ' + Date(bus.datahoraenvio)
+        const title = 'Bus line: ' + bus.linha + '; Vehicle ID: ' +  bus.ordem + '; Speed: ' + bus.velocidade + ' km/h; Date: ' + Date(bus.datahoraenvio)
         const marker = L.marker(
           new L.LatLng(Number(bus.latitude.replace(',','.')), Number(bus.longitude.replace(',','.'))),
           { icon: busIcon,
