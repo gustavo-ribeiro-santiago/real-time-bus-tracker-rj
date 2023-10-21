@@ -18,6 +18,12 @@ This web application showcases the use of Mapbox and Leaflet to create an intera
 
 Access Web App [here](gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-rj) or clone this repository and open 'index.html' to run this web app.
 
+## Roadmap of future improvements
+
+- Include "Loading..." message until it fetches bus locations data for the first time.
+- Include dropdown for filtering specific bus lines on the map
+- Include information about each bus lines' routes, if available to retrieve this information somewhere else
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
