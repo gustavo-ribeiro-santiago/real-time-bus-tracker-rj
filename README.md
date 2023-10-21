@@ -16,7 +16,7 @@ This web application showcases the use of Mapbox and Leaflet to create an intera
 
 ## How to Run
 
-Access Web App [here](gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-rj) or clone this repository and open 'index.html' to run this web app.
+Access web app [here](gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-rj) or clone this repository and open 'index.html' to run this web app on your local machine.
 
 ## Roadmap of future improvements
 
