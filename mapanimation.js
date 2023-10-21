@@ -19,7 +19,7 @@ async function createMapClustering() {
     const data = await getBusLocations();
     markers.clearLayers();
     const length = data.length;
-    let markedBuses = [] // to avoid repetition due to data characteristics
+    let markedBuses = [] // to avoid repetition of buses due to data characteristics
     for (let i = 0; i < length; i++) {
       const bus = data[i];
       if (markedBuses.indexOf(bus.ordem) < 0) {
