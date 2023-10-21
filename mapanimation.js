@@ -2,16 +2,14 @@ async function createMapClustering() {
   L.mapbox.accessToken = 'pk.eyJ1IjoiZ3VzdGF2b3Jpc2EiLCJhIjoiY2xueGt6ejBjMGlwNTJrcmhqbWJobnh5aiJ9.hXeNZsM25VwshXGjSbZ9qA';
   
   let map = L.mapbox.map('map')
-    .setView([-22.908333, -43.196388], 12)
+    .setView([-22.908333, -43.196388], 10)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
   
   const markers = new L.MarkerClusterGroup();
 
   async function run() {
     const data = await getBusLocations();
-     map.eachLayer((layer) => {
-      if (layer instanceof L.Marker) map.removeLayer(layer);
-    });
+    markers.clearLayers();
     const length = data.length;
     let markedBuses = []
     for (let i = 0; i < length; i++) {
@@ -37,7 +35,7 @@ async function createMapClustering() {
 
   // Function to fetch bus locations
   async function getBusLocations() {
-    const url = 'https://dados.mobilidade.rio/gps/sppo?dataInicial=2023-10-21+14:50:00&dataFinal=2023-10-21+15:00:00.'
+    const url = 'https://dados.mobilidade.rio/gps/sppo?dataInicial=2023-10-21+16:50:00&dataFinal=2023-10-21+17:00:00.'
     // const url = 'https://dados.mobilidade.rio/gps/sppo.'
     const response  = await fetch(url);
     const json      = await response.json();
