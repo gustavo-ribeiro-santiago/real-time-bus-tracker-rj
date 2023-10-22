@@ -34,6 +34,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 [Leaflet](https://leafletjs.com/)
 
+[Data Rio](https://www.data.rio/)
+
 ## Contact
 Gustavo Ribeiro Santiago
 
