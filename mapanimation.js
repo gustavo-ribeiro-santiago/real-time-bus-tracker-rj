@@ -19,11 +19,11 @@ async function createMapClustering() {
     const data = await getBusLocations();
     markers.clearLayers();
     const length = data.length;
-    let markedBuses = [] // to avoid repetition of buses due to data characteristics
+    let plottedBuses = [] // control plotted buses to avoid repetition of buses
     for (let i = 0; i < length; i++) {
       const bus = data[i];
-      if (markedBuses.indexOf(bus.ordem) < 0) {
-        markedBuses.push(bus.ordem);
+      if (plottedBuses.indexOf(bus.ordem) < 0) {
+        plottedBuses.push(bus.ordem);
         const title = 'Bus line: ' + bus.linha + '; Vehicle ID: ' +  bus.ordem + '; Speed: ' + bus.velocidade + ' km/h; Date: ' + Date(bus.datahoraenvio)
         const marker = L.marker(
           new L.LatLng(Number(bus.latitude.replace(',','.')), Number(bus.longitude.replace(',','.'))),
