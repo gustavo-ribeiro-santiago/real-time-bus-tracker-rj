@@ -1,4 +1,3 @@
-
 async function createMapClustering() {
   L.mapbox.accessToken = 'pk.eyJ1IjoiZ3VzdGF2b3Jpc2EiLCJhIjoiY2xueGt6ejBjMGlwNTJrcmhqbWJobnh5aiJ9.hXeNZsM25VwshXGjSbZ9qA';
   
@@ -20,36 +19,29 @@ async function createMapClustering() {
   async function run() {
     const data = await getBusLocations();
     markers.clearLayers();
-    const length = data.length;
-    let plottedBuses = [] // control plotted buses by ID to avoid repetition
-    for (let i = 0; i < length; i++) {
-      const bus = data[i];
-      if (filteredBusLine !== "" && filteredBusLine !== bus.linha) continue;
-      if (plottedBuses.indexOf(bus.ordem) >= 0) continue;
+    let plottedBuses = []; // control plotted buses by ID to avoid repetition
+    let busLines = []; // store bus lines values for filter
+    data.forEach(bus => {
+      if (filteredBusLine !== "" && filteredBusLine !== bus.linha) return;
+      if (plottedBuses.indexOf(bus.ordem) >= 0) return;
+      if (busLines.indexOf(bus.linha) === -1) busLines.push(bus.linha);
       plottedBuses.push(bus.ordem);
       const title = 'Bus line: ' + bus.linha + '; Vehicle ID: ' +  bus.ordem + '; Speed: ' +
-        bus.velocidade + ' km/h; Date: ' + Date(bus.datahoraenvio)
+        bus.velocidade + ' km/h; Date: ' + Date(bus.datahoraenvio);
       const marker = L.marker(
         new L.LatLng(Number(bus.latitude.replace(',','.')), Number(bus.longitude.replace(',','.'))),
-        { icon: busIcon,
-          title: title
-        });
+        {icon: busIcon, title: title});
       marker.bindPopup(title);
       markers.addLayer(marker);
-    }
+    });
     document.getElementById("busesQty").innerText = plottedBuses.length + " Buses";
-    let busLines = [];
     filter = document.getElementById("filterForm");
     filter.innerHTML = `<option selected>${filteredBusLine? filteredBusLine: "Filter by bus line"}</option>`;
-    data.forEach((bus => {
-      if (busLines.indexOf(bus.linha) === -1)
-        busLines.push(bus.linha);
-    }));
     busLines.sort();
     busLines.forEach(busLine => filter.innerHTML += `<option value="${busLine}">${busLine}</option>`);
     filter.addEventListener('change', () => {
       filteredBusLine = filter.value;
-      run()
+      run();
     });
     map.addLayer(markers);
     setTimeout(run,30000);
@@ -69,7 +61,6 @@ async function createMapClustering() {
     ("0" + finalDate.getDate()).slice(-2) + "+" + ("0" + finalDate.getHours()).slice(-2) + ":" + 
     ("0" + finalDate.getMinutes()).slice(-2) + ":00";
     const url = `https://dados.mobilidade.rio/gps/sppo?dataInicial=${formattedInitialDate}&dataFinal=${formattedFinalDate}.`
-    // const url = 'https://dados.mobilidade.rio/gps/sppo.'
     const response  = await fetch(url);
     const json      = await response.json();
     console.log(response);
