@@ -1,7 +1,7 @@
 async function createMapClustering() {
   L.mapbox.accessToken = 'pk.eyJ1IjoiZ3VzdGF2b3Jpc2EiLCJhIjoiY2xueGt6ejBjMGlwNTJrcmhqbWJobnh5aiJ9.hXeNZsM25VwshXGjSbZ9qA';
   
-  let map = L.mapbox.map('map')
+  const map = L.mapbox.map('map')
     .setView([-22.908333, -43.196388], 10)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
@@ -17,10 +17,11 @@ async function createMapClustering() {
   let filteredBusLine = "";
 
   async function run() {
+    // plot buses, applying the bus line filter if any, and update the bus line filter options
     const data = await getBusLocations();
     markers.clearLayers();
-    let plottedBuses = []; // control plotted buses by ID to avoid repetition
-    let busLines = []; // store bus lines values for filter
+    const plottedBuses = []; // manage plotted buses by ID to avoid repetition
+    const busLines = []; // store bus lines values for filter options
     data.forEach(bus => {
       if (filteredBusLine !== "" && filteredBusLine !== bus.linha) return;
       if (plottedBuses.indexOf(bus.ordem) >= 0) return;
@@ -36,7 +37,7 @@ async function createMapClustering() {
     });
     document.getElementById("busesQty").innerText = plottedBuses.length + " Buses";
     filter = document.getElementById("filterForm");
-    filter.innerHTML = `<option selected>${filteredBusLine? filteredBusLine: "Filter by bus line"}</option>`;
+    filter.innerHTML = `<option selected>${filteredBusLine ? filteredBusLine : "Filter by bus line"}</option>`;
     busLines.sort();
     busLines.forEach(busLine => filter.innerHTML += `<option value="${busLine}">${busLine}</option>`);
     filter.addEventListener('change', () => {
@@ -44,7 +45,6 @@ async function createMapClustering() {
       run();
     });
     map.addLayer(markers);
-    setTimeout(run,30000);
     document.getElementById("loading").remove();
   }
 
@@ -63,12 +63,12 @@ async function createMapClustering() {
     const url = `https://dados.mobilidade.rio/gps/sppo?dataInicial=${formattedInitialDate}&dataFinal=${formattedFinalDate}.`
     const response  = await fetch(url);
     const json      = await response.json();
-    console.log(response);
     console.log(json);
     return json;
   }
 
   run();
+  setInterval(run, 30000);
 }
 
 createMapClustering()

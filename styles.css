@@ -4,7 +4,7 @@ body {
   height: 100vh;
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 1fr 1fr 1fr 7fr;
+  grid-template-rows: 1fr 1fr 1fr 8fr;
   grid-template-areas: 
     'title'
     'info'
@@ -16,9 +16,9 @@ body {
   grid-area: title;
   text-align: center;
   line-height: 1.5;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  background-color: #75cff086;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background-color: #75cff06a;
 }
 
 .bus-icon{
