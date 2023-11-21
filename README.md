@@ -21,7 +21,7 @@ Access web page [here](gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-
 ## Roadmap of future improvements
 
 - Include "Loading..." message until it fetches bus locations data for the first time.
-- Include dropdown for filtering specific bus lines on the map
+- Add clear filter option when there is any value selected on the bus line filter
 - Include information about each bus lines' routes, if available to retrieve this information somewhere else
 
 ## License
