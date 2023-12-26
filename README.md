@@ -4,25 +4,24 @@ A web application that displays the real-time locations of Rio de Janeiro's buse
 
 ## Description
 
-This web application showcases the use of Mapbox and Leaflet to create an interactive map that displays the real-time locations of buses in Rio de Janeiro. The map is centered on Rio de Janeiro, and bus location data is fetched from the cityhall's API to display bus markers on the map. It utilizes the Leaflet Markercluster plugin for efficient marker clustering.
+This web application utilizes React for building the user interface and incorporates the Bootstrap framework for styling. The app showcases the use of Mapbox and Leaflet to create an interactive map that displays the real-time locations of buses in Rio de Janeiro. The map is centered on Rio de Janeiro, and bus location data is fetched from the cityhall's API to display bus markers on the map. It utilizes the Leaflet Markercluster plugin for efficient marker clustering.
 
 ## Features
 
 - Interactive map using Mapbox and Leaflet.
 - Real-time bus location display.
 - Marker clustering for improved visualization.
-- Customizable bus markers.
+- Customized bus markers.
+- Bus lines filtering.
 - Rio de Janeiro's cityhall API.
 
 ## How to Run
 
-Access web page [here](gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-rj) or clone this repository and open 'index.html' to run it on your local machine.
+Access web app [here](gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-rj) or clone this repository to run it on your local machine.
 
 ## Roadmap of future improvements
 
-- Include "Loading..." message until it fetches bus locations data for the first time.
-- Add clear filter option when there is any value selected on the bus line filter
-- Include information about each bus lines' routes, if available to retrieve this information somewhere else
+- Include information about each bus lines' routes, if available to retrieve this information from somewhere else
 
 ## License
 
