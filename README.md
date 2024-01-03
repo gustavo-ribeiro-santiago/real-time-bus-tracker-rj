@@ -17,7 +17,7 @@ This web application utilizes React for building the user interface and incorpor
 
 ## How to Run
 
-Access web app [here](gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-rj) or clone this repository to run it on your local machine.
+Access web app [here](https://gustavo-ribeiro-santiago.github.io/real-time-bus-tracker-rj) or clone this repository to run it on your local machine.
 
 ## Roadmap of future improvements
 
