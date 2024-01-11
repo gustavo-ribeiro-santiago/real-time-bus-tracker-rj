@@ -1,5 +1,7 @@
 # Real Time Rio de Janeiro Bus Tracker
 
+[Project Screenshot](real%20time%20bus%20tracker%20screenshot.png)
+
 A web application that displays the real-time locations of Rio de Janeiro's buses on a map using Mapbox and Leaflet.
 
 ## Description
