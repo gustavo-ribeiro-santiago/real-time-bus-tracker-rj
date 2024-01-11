@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/real-time-bus-tracker-rj/static/css/main.36997fef.css",
-    "main.js": "/real-time-bus-tracker-rj/static/js/main.6507c1e7.js",
+    "main.js": "/real-time-bus-tracker-rj/static/js/main.30d08812.js",
     "static/js/787.801c3fa9.chunk.js": "/real-time-bus-tracker-rj/static/js/787.801c3fa9.chunk.js",
     "index.html": "/real-time-bus-tracker-rj/index.html",
     "main.36997fef.css.map": "/real-time-bus-tracker-rj/static/css/main.36997fef.css.map",
-    "main.6507c1e7.js.map": "/real-time-bus-tracker-rj/static/js/main.6507c1e7.js.map",
+    "main.30d08812.js.map": "/real-time-bus-tracker-rj/static/js/main.30d08812.js.map",
     "787.801c3fa9.chunk.js.map": "/real-time-bus-tracker-rj/static/js/787.801c3fa9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.36997fef.css",
-    "static/js/main.6507c1e7.js"
+    "static/js/main.30d08812.js"
   ]
 }
