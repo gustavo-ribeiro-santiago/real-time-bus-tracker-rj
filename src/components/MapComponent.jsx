@@ -19,7 +19,7 @@ function MapComponent({ data, filteredBusLines }) {
           url={`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           id="mapbox/streets-v11"
-          accessToken="pk.eyJ1IjoiZ3VzdGF2b3Jpc2EiLCJhIjoiY2xueGt6ejBjMGlwNTJrcmhqbWJobnh5aiJ9.hXeNZsM25VwshXGjSbZ9qA"
+          accessToken="pk.eyJ1IjoiZ3VzdGF2b3Jpc2EiLCJhIjoiY2xwbnZ4c2F6MGpzMzJpcW5vbzRyNzhrbSJ9.0NGf0a40DCvZq-W0IQBVYw"
         />
         <MarkerClusterGroup>
           <Markers map={map} data={data} filteredBusLines={filteredBusLines} />
