@@ -1,6 +1,7 @@
 import * as L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
 import { useEffect } from 'react';
+import busIconImage from '../assets/bus.png';
 
 var perimeters = new L.layerGroup();
 
@@ -13,7 +14,7 @@ function Markers({ map, data, filteredBusLines }) {
   // Initialize busIDs variable to keep track and avoid repetition of buses (data may contain repeated buses)
   const busIDs = [];
   const busIcon = L.icon({
-    iconUrl: './assets/bus.png',
+    iconUrl: busIconImage,
     iconSize: [32, 37],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32],
@@ -27,15 +28,15 @@ function Markers({ map, data, filteredBusLines }) {
       ordem: busID,
       linha: busLine,
       velocidade: speed,
-      datahoraenvio: date,
+      datahora,
     }) => {
       if (filteredBusLines.length && !filteredBusLines.includes(busLine))
         return;
       if (busIDs.includes(busID)) return;
       busIDs.push(busID);
-      const title = `Bus Line: ${busLine}; \nVehicle ID: ${busID}; \nSpeed: ${speed} km/h; \nDate: ${Date(
-        date
-      )}`;
+      const title = `Bus Line: ${busLine}; \nVehicle ID: ${busID}; \nSpeed: ${speed} km/h; \nDate: ${new Date(
+        parseInt(datahora)
+      ).toLocaleString('pt-BR')}`;
       return (
         <Marker
           icon={busIcon}
@@ -50,7 +51,7 @@ function Markers({ map, data, filteredBusLines }) {
             Bus Line: {busLine}; <br />
             Vehicle ID: {busID}; <br />
             Speed: {speed} km/h; <br />
-            Date: {Date(date)}
+            Date: {new Date(parseInt(datahora)).toLocaleString('pt-BR')}
           </Popup>
         </Marker>
       );

@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { useEffect, useState, useCallback } from 'react';
 import BusLinesFilter from './components/BusLinesFilter.jsx';
 import MapComponent from './components/MapComponent.jsx';
+import busIcon from './assets/bus.png';
 
 function App() {
   const [busLineOptions, setBusLineOptions] = useState([
@@ -41,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <h2 className="title h5 mt-2 mb-0 pb-0">
-        <img src="./assets/bus.png" className="bus-icon pb-2" alt="bus icon" />
+        <img src={busIcon} className="bus-icon pb-2" alt="bus icon" />
         Rio de Janeiro Real Time Bus Tracker
       </h2>
       <About />
@@ -100,7 +101,7 @@ function LoadingSpinner() {
 
 async function getBusData() {
   const currentDate = new Date();
-  const minutesToSubtract = 5;
+  const minutesToSubtract = 2;
   const initialDate = new Date(
     currentDate.getTime() - 60000 * minutesToSubtract
   );
@@ -131,7 +132,43 @@ async function getBusData() {
   const response = await fetch(url);
   const busData = await response.json();
   console.log(busData);
-  return busData;
+  busData.forEach((bus) => {
+    if (bus.ordem === "A71536") {
+      console.log(bus);
+      console.log('Data Hora:', new Date(parseInt(bus.datahora)).toLocaleString('pt-BR'));
+      console.log('Data Hora Envio:', new Date(parseInt(bus.datahoraenvio)).toLocaleString('pt-BR'));
+      console.log('Data Hora Servidor:', new Date(parseInt(bus.datahoraservidor)).toLocaleString('pt-BR'));
+    }
+  });
+
+  // Create a Map to store the latest entry for each bus
+  const latestBusEntries = new Map();
+  
+  // Iterate through all entries and keep only the latest one for each bus
+  busData.forEach((bus) => {
+    const currentBusTime = parseInt(bus.datahora);
+    const existingBus = latestBusEntries.get(bus.ordem);
+    
+    // If this bus hasn't been seen yet, or if this entry is more recent, update the map
+    if (!existingBus || currentBusTime > parseInt(existingBus.datahora)) {
+      latestBusEntries.set(bus.ordem, bus);
+    }
+  });
+  
+  // Convert the Map values back to an array
+  const filteredBusData = Array.from(latestBusEntries.values());
+
+  filteredBusData.forEach((bus) => {
+    if (bus.ordem === "A71536") {
+      console.log('--------------------------------');
+      console.log(bus);
+      console.log('Data Hora:', new Date(parseInt(bus.datahora)).toLocaleString('pt-BR'));
+      console.log('Data Hora Envio:', new Date(parseInt(bus.datahoraenvio)).toLocaleString('pt-BR'));
+      console.log('Data Hora Servidor:', new Date(parseInt(bus.datahoraservidor)).toLocaleString('pt-BR'));
+    }
+  });
+
+  return filteredBusData;
 }
 
 export default App;
